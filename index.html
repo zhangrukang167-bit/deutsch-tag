@@ -18,7 +18,7 @@
   <header class="hero"><p class="sub">DEUTSCH TAG · 从零开始的每日德语</p><h1>今天，学会一句德语。</h1><p class="sub" id="date"></p><div class="stats"><div class="stat"><b id="streak">0</b><span>连续打卡天数</span></div><div class="stat"><b id="total">0</b><span>累计学习天数</span></div></div></header>
   <div class="grid"><section><h2>今日一句</h2><p class="label">DAY <span id="dayNo"></span> · 听懂并开口说出来</p><p class="phrase" id="german"></p><p class="meaning" id="chinese"></p><button class="listen" id="listen" aria-label="朗读今天的德语句子">🔊 示范朗读</button><div class="pronunciation"><b>音标</b> <span class="ipa" id="ipa"></span><br><b>中文近似读法</b>：<span id="read"></span><br><b>怎么读</b>：<span id="how"></span></div><div class="example" id="example"></div><button id="checkin">✓ 完成今日学习，立即打卡</button><div class="tip">小诀窍：先听示范朗读，再看音标慢读三次，最后不看提示说一次。</div></section>
   <section><h2>本月足迹</h2><div class="calendar" id="calendar"></div><p class="label" style="margin-top:16px">绿色表示已完成；数据只保存在本机。</p></section></div>
-  <section style="margin-top:18px"><h2>你的第一周路线</h2><ol class="lesson"><li><span class="num">01</span><span><b>问候与自我介绍</b><br>Hallo! Ich heiße ...</span></li><li><span class="num">02</span><span><b>礼貌用语</b><br>Danke, bitte, entschuldigung</span></li><li><span class="num">03</span><span><b>点餐与数字</b><br>Ich möchte ...</span></li><li><span class="num">04</span><span><b>日常提问</b><br>Wie geht es dir?</span></li></ol></section>
+  <section style="margin-top:18px"><h2>30 天入门路线</h2><ol class="lesson"><li><span class="num">01–07</span><span><b>问候与自我介绍</b><br>Hallo! · Ich heiße ... · Wie geht es dir?</span></li><li><span class="num">08–14</span><span><b>点餐与数字</b><br>Ich möchte ... · Wie viel kostet das? · Die Rechnung, bitte.</span></li><li><span class="num">15–21</span><span><b>出行与位置</b><br>Wo ist ...? · Ich suche ... · Geradeaus, bitte.</span></li><li><span class="num">22–30</span><span><b>日常交流</b><br>Ich verstehe nicht. · Können Sie das wiederholen? · Bis morgen!</span></li></ol></section>
   <p class="footer">Deutsch Tag · 每一次小打卡，都会变成真正的进步。</p>
 </main><div id="toast"></div>
 <script>
@@ -29,7 +29,30 @@ const phrases=[
  ['Danke schön!','非常感谢！','/ˈdaŋkə ʃøːn/','当克 舍恩','sch 读“什”；ö 要圆起嘴唇，像“呃”但嘴形像“乌”。','schön 让感谢更真诚。'],
  ['Bitte.','请／不客气。','/ˈbɪtə/','比特 额','i 是短促的“伊”；末尾 e 发轻轻的“额”。','一个非常万能的礼貌词。'],
  ['Ich komme aus China.','我来自中国。','/ɪç ˈkɔmə aʊs ˈçiːna/','伊希 科默 奥斯 希娜','k 要送气清楚；au 合起来读“奥”；China 的 ch 也是轻“希”。','aus 表示“来自”。'],
- ['Tschüss!','再见！','/tʃʏs/','秋斯','tsch 读“吃”；ü 要圆唇发“伊”，接近“于”但更短。','熟人之间最自然的告别方式。']];
+ ['Tschüss!','再见！','/tʃʏs/','秋斯','tsch 读“吃”；ü 要圆唇发“伊”，接近“于”但更短。','熟人之间最自然的告别方式。'],
+ ['Guten Morgen!','早上好！','/ˌɡuːtn̩ ˈmɔʁɡn̩/','古滕 莫根','Guten 的 u 拉长；r 是轻微喉音。','上午见面时使用。'],
+ ['Guten Abend!','晚上好！','/ˌɡuːtn̩ ˈaːbn̩t/','古滕 阿本特','Abend 的 a 拉长；末尾 d 接近“特”。','傍晚或晚上见面时使用。'],
+ ['Wie heißt du?','你叫什么名字？','/viː haɪst duː/','维 海斯特 杜','Wie 的 w 读 v；heißt 的 ei 读“艾”。','对朋友询问姓名。'],
+ ['Ich spreche ein bisschen Deutsch.','我会说一点德语。','/ɪç ˈʃpʁɛçə aɪn ˈbɪsçən dɔɪtʃ/','伊希 施普雷赫 艾因 比申 多伊奇','sp 在词首读“施普”；Deutsch 的 eu 读“奥伊”。','初次交流很实用。'],
+ ['Ja, gern.','好的，乐意。','/jaː ɡɛʁn/','呀 根','Ja 的 j 读“呀”；gern 的 r 轻轻带过。','接受邀请或回答“愿意”。'],
+ ['Nein, danke.','不了，谢谢。','/naɪn ˈdaŋkə/','耐因 当克','Nein 读“耐因”；ng 像“当”的尾音。','礼貌拒绝时使用。'],
+ ['Entschuldigung.','对不起／劳驾。','/ɛntˈʃʊldɪɡʊŋ/','恩特 舒尔迪贡','sch 读“什”；重音在 schuld。','叫住陌生人或道歉都可用。'],
+ ['Ich möchte einen Kaffee.','我想要一杯咖啡。','/ɪç ˈmœçtə ˈaɪnən kaˈfeː/','伊希 默希特 艾嫩 卡费','möchte 的 ö 圆唇；Kaffee 的 ee 拉长。','点饮料的基本句。'],
+ ['Ein Wasser, bitte.','请给我一杯水。','/aɪn ˈvasɐ ˈbɪtə/','艾因 瓦瑟 比特','Wasser 的 w 读“瓦”；s 发清楚。','餐馆最常用点单句。'],
+ ['Wie viel kostet das?','这个多少钱？','/viː fiːl ˈkɔstət das/','维 菲尔 科斯特特 达斯','viel 的 ie 拉长；kostet 的 o 短促。','购物前询问价格。'],
+ ['Die Rechnung, bitte.','请给我账单。','/diː ˈʁɛçnʊŋ ˈbɪtə/','迪 雷希农 比特','Rechnung 的 ch 是轻摩擦音；ng 连读。','用餐结束时使用。'],
+ ['Das schmeckt gut.','这个很好吃。','/das ʃmɛkt ɡuːt/','达斯 施梅克特 古特','schm 连读“施姆”；gut 的 u 拉长。','夸赞食物。'],
+ ['Wo ist der Bahnhof?','火车站在哪里？','/voː ɪst deːɐ̯ ˈbaːnhoːf/','沃 伊斯特 德尔 班霍夫','Wo 的 w 读 v；Bahnhof 的 h 不单独发音。','问路时很实用。'],
+ ['Ich suche ein Hotel.','我在找一家酒店。','/ɪç ˈzuːxə aɪn hoˈtɛl/','伊希 祖赫 艾因 霍泰尔','su 的 s 读“兹”；ch 轻摩擦。','旅行时说明需求。'],
+ ['Geradeaus, bitte.','请一直往前走。','/ɡəˈʁaːdəˌaʊs ˈbɪtə/','格拉德奥斯 比特','au 读“奥”；重音在 ra。','听到指路时记住它。'],
+ ['Links oder rechts?','左边还是右边？','/lɪŋks ˈoːdɐ ʁɛçts/','林克斯 欧德尔 雷希茨','links 末尾 ks 清楚；rechts 的 ch 轻读。','确认转弯方向。'],
+ ['Ich nehme den Bus.','我坐公交车。','/ɪç ˈneːmə deːn bʊs/','伊希 内默 登 布斯','nehme 的 e 拉长；Bus 的 u 短促。','描述出行方式。'],
+ ['Wann fährt der Zug?','火车什么时候开？','/van fɛːɐ̯t deːɐ̯ tsuːk/','万 费尔特 德尔 茨古克','fährt 的 ä 接近长“诶”；Zug 的 z 读“茨”。','查看交通时间时使用。'],
+ ['Ich verstehe nicht.','我不明白。','/ɪç fɛɐ̯ˈʃteːə nɪçt/','伊希 费尔施特耶 尼希特','ver- 轻读；stehe 的 e 拉长。','听不懂时坦诚说出来。'],
+ ['Können Sie das wiederholen?','您能再说一遍吗？','/ˈkœnən ziː das ˌviːdɐˈhoːlən/','克嫩 齐 达斯 维德尔霍伦','Können 的 ö 圆唇；Sie 读长“齐”。','正式、礼貌地请人重复。'],
+ ['Sprechen Sie Englisch?','您会说英语吗？','/ˈʃpʁɛçn̩ ziː ˈɛŋlɪʃ/','施普雷欣 齐 英格利希','sp 读“施普”；Englisch 的 g 清楚。','沟通困难时的备用句。'],
+ ['Langsam, bitte.','请慢一点。','/ˈlaŋzaːm ˈbɪtə/','朗扎姆 比特','s 在元音间读“z”；a 拉长。','请对方放慢语速。'],
+ ['Ich lerne Deutsch.','我在学德语。','/ɪç ˈlɛʁnə dɔɪtʃ/','伊希 莱尔内 多伊奇','lerne 的 r 轻；Deutsch 的 eu 读“奥伊”。','介绍自己的学习状态。']];
 const key='deutsch-tag-checkins-v1', now=new Date(), iso=d=>d.toISOString().slice(0,10), today=iso(now);
 let checks=JSON.parse(localStorage.getItem(key)||'[]');
 const phrase=phrases[(Math.floor(now/86400000)%phrases.length+phrases.length)%phrases.length];
